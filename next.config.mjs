@@ -1,11 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  /* config options here */
-  reactCompiler: true,
   images: {
-
-    domains: ["images.unsplash.com"],
+    unoptimized: true, // disables server optimization for Netlify
   },
+  output: 'export', // makes static export use /out folder
+  reactStrictMode: true,
 };
 
 export default nextConfig;
