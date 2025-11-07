@@ -1,0 +1,62 @@
+/* Subtle blob/shine helpers + Embla styles + reveal animation */
+.heroBlob {
+  position: absolute;
+  inset: auto auto -20% -10%;
+  width: 420px;
+  height: 420px;
+  border-radius: 9999px;
+  pointer-events: none;
+}
+
+.cardShine {
+  position: relative;
+  overflow: hidden;
+}
+
+.cardShine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transform: translateX(-100%);
+  animation: shine 4s infinite;
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-100%);
+  }
+  60% {
+    transform: translateX(120%);
+  }
+  100% {
+    transform: translateX(120%);
+  }
+}
+
+/* Embla (carousel) */
+.embla {
+  overflow: hidden;
+}
+
+.embla__container {
+  display: flex;
+  gap: 1rem;
+}
+
+.embla__slide {
+  flex: 0 0 100%;
+  min-width: 0;
+}
+
+/* reveal animation (paired with [data-reveal]) */
+:global(.reveal-in) {
+  opacity: 1 !important;
+  transform: translateY(0) scale(1) !important;
+}
+
+:global([data-reveal]) {
+  opacity: 0;
+  transform: translateY(14px) scale(0.98);
+  transition: transform 0.6s ease, opacity 0.6s ease;
+}
